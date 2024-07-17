@@ -1,0 +1,15 @@
+﻿@model List<WebTestEx.Models.Data.Student>
+
+
+<div class="text-center">
+    <p>students</p>
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.StudentName</li>
+        }
+    </ul>
+
+
+</div>

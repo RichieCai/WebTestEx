@@ -1,0 +1,34 @@
+version: '3.8'
+
+#function1
+# services:
+#  webtestex:
+#    container_name: webtestexcomp
+#    image: ${DOCKER_REGISTRY-}webtestex
+#    build:
+#      context: .
+#      dockerfile: WebTestEx/Dockerfile
+#    ports:
+#      - "8077:80"
+#    environment:
+#       - ConnectionStrings__dbCustomDbSampleConnection=Server=host.docker.internal,1433;Database=dbCustomDbSample;User Id=sa;Password=zz123123;MultipleActiveResultSets=true
+
+
+#function2
+services:
+  webtestex:
+    container_name: webtestex
+    image: ${DOCKER_REGISTRY-}webtestex
+    build:
+      context: .
+      dockerfile: WebTestEx/Dockerfile
+    environment:
+      - DATABASE_HOST=host.docker.internal
+    ports:
+      - "8077:80"
+    networks:
+      - mssql-network
+
+networks:
+  mssql-network:
+    driver: bridge

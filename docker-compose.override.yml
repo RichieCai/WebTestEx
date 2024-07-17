@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  webtestex:
+    container_name: webtestexcomp
+    image: ${DOCKER_REGISTRY-}webtestex
+    build:
+      context: .
+      dockerfile: WebTestEx/Dockerfile
+    ports:
+      - "8075:80" 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+
